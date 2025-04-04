@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.Willi782</groupId>
+    <artifactId>Securitycheck</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+            <id>Willi782</id>
+            <name>Willi Baierle</name>
+            <email>wil.baierle.24@heilbronn.dhbw.de</email>
+            <url>https://github.com/Willi782</url>
+        </developer>
+        <developer>
+            <id>aaiimm</id>
+            <name>Adi Imran Mustajbegovic</name>
+            <email>adi.mustajbegovic.24@heilbronn.dhbw.de</email>
+            <url>https://github.com/aaiimm</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/Willi782/Securitycheck</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>23</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+    </properties>
+
+    <dependencies>
+        <!-- Password Validator by C Thiebaud-->
+        <dependency>
+            <groupId>com.cthiebaud</groupId>
+            <artifactId>password-validator</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- JUnit 5 for testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>github-repo</id>
+            <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>github-repo</id>
+            <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.3</version>
+            </plugin>
+            <!-- Maven Javadoc Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <destDir>${project.build.directory}/site/apidocs</destDir>
+                    <showAuthor>true</showAuthor>
+                    <showVersion>true</showVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
